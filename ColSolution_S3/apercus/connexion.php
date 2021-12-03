@@ -29,7 +29,8 @@ if (isset($_POST['email'], $_POST['pass'])) {
 
         echo "<center><h1>Inscription effectué</h1></center>";
         header('Location: accueil.php');
-        exit();    }
+        exit();    
+    }
 }
 
 ?>
