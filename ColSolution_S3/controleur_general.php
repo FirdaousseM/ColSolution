@@ -21,21 +21,7 @@ class ContGeneral {
         }
     }
 
-    public function lancementModule() {
-		
-        require_once "modules/$this->moduleDemande/$this->moduleDemande.php";
 
-        switch($this->moduleDemande){
-	
-            case 'mod_accueil': $this->moduleChoisi = new ModAccueil(); 
-            break;
-            case 'mod_compte': $this->moduleChoisi = new ModCompte(); 
-            break;
-            case 'mod_annonce': $this->moduleChoisi = new ModAnnonce();
-            break;
-            
-	    }   
-    }
 
 }
 ?>
