@@ -9,7 +9,6 @@ class ContGeneral {
 
     public function __construct() {
         $this->moduleDemande = $this->choixModule();
-        $this->lancementModule();
     }
 
     public function choixModule() { 
