@@ -1,15 +1,14 @@
 <?php
 
-require_once('vue_accueil.php');
+require_once 'cont_accueil.php';
 
 class ModAccueil{
 
-    private $controlleur;
-    private $vue;
+    private $controleur;
 
     public function __construct() { 
-        $vue = new VueAccueil();
-    
+        $controleur = new ContAccueil();
+
     }
 
 }
