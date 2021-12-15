@@ -1,25 +1,26 @@
 <?php
 
-require_once 'modele.php';
-require_once 'vue.php';
 
-class controleur {
 
-	public $modele;
-	public $module;
+class ContGeneral {
 
-	public function __construct(){
-		$this->modele = new modele();
-		if(isset($_GET['module'])){
-			$this->module = $_GET['module'];
-		}
-		else{
-			$this->module = "connexion";
-		}
-		
-	}
+    public $moduleDemande;
+    public $moduleChoisi;
+
+    public function __construct() {
+        $this->moduleDemande = $this->choixModule();
+    }
+
+    public function choixModule() { 
+        if (isset($_GET['module'])) { 
+            return $_GET['module'];
+        }
+        else {
+            return 'mod_accueil';    
+        }
+    }
+
+
+
 }
-
-
-
 ?>
