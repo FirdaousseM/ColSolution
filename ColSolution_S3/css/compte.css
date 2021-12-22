@@ -91,12 +91,27 @@ nav img {
 	margin-right:10px;
 }
 
+#pdp {
+	background-color:rgb(196, 117, 52);
+	position:relative;
+	bottom:20px;
+	text-decoration:none;
+	font-weight:bold;
+	color:black;
+	padding:7px;
+	border:2px black solid;
+	border-radius:4px;
+	margin-right:10px;
+	top: 20px;
+
+}
+
 /* menu de gauche (lien vers page message) */
 
 
 #menusMessage {
 	display:inline-block;
-	width:150px;
+	width:250px;
 	margin-right:20px;
 }
 
@@ -104,9 +119,7 @@ nav img {
 
 #Annonce {
 	display:inline-block;
-	margin-right:50px;
-	width:500px;
-    left: 130px;
+	width:450px;
     position: relative;
 }
 
@@ -116,6 +129,7 @@ nav img {
 	display:inline-block;
 	width:200px;
 	float:right;
+	position: relative;
 }
 
 /* MAIN */
@@ -192,6 +206,12 @@ main {
     width:996px;
     color: rgb(230, 221, 215);
     text-align: left;
+}
+#Desc {
+    background-color: black;
+    width:996px;
+    color: rgb(230, 221, 215);
+    text-align: center;
 }
 footer {
 	width:1000px;
