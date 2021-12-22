@@ -8,13 +8,6 @@ class ModeleCompte extends Connexion{
 		
 	}
 
-	function getUtilisateurs(){
-		$laPreparation = self::$bdd->prepare('SELECT * FROM Utilisateurs');
-		$laPreparation->execute();
-		$testFetch = $laPreparation->fetchAll();
-		return $testFetch;
-	}
-
 }
 
 
