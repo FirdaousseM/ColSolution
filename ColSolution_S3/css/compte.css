@@ -3,7 +3,7 @@ body {
 	font-family:Arial;
 	margin:auto;
 	width:1000px;
-	background:url('../images/vdvv.jpg') no-repeat center fixed;
+	background:url('../images/wowww.jpg') no-repeat center fixed;
 	-webkit-background-size:cover ;
 	-webkit-backdrop-filter: blur(15px);
 
@@ -79,7 +79,7 @@ nav img {
 /* liens cliquables */
 
 .menuLink {
-	background-color:rgb(196, 117, 52);
+	background-color: rgb(108, 158, 187);
 	position:relative;
 	bottom:20px;
 	text-decoration:none;
@@ -91,22 +91,36 @@ nav img {
 	margin-right:10px;
 }
 
+#pdp {
+	background-color:rgb(196, 117, 52);
+	position:relative;
+	bottom:20px;
+	text-decoration:none;
+	font-weight:bold;
+	color:black;
+	padding:7px;
+	border:2px black solid;
+	border-radius:4px;
+	margin-right:10px;
+	top: 20px;
+
+}
+
 /* menu de gauche (lien vers page message) */
 
 
 #menusMessage {
 	display:inline-block;
-	width:150px;
-	margin-right:20px;
+	width:250px;
+	position: relative;
+	float: left;
 }
 
 /* menu central (pages publication/recherche annonce) */
 
 #Annonce {
 	display:inline-block;
-	margin-right:50px;
-	width:500px;
-    left: 130px;
+	width:420px;
     position: relative;
 }
 
@@ -116,6 +130,7 @@ nav img {
 	display:inline-block;
 	width:200px;
 	float:right;
+	position: relative;
 }
 
 /* MAIN */
@@ -128,15 +143,16 @@ main {
 	color:rgb(187, 171, 171);
 	font-size:18px;
 	/*background-color:rgb(5, 5, 5);*/	
-/*	background:url('../images/on2.jpg') no-repeat center ;*/ 
+	background:url('../images/fn.jpg') no-repeat center ; 
 	-webkit-background-size:cover ;
-	background-color:rgb(27, 26, 26);
+	/*background-color:rgb(27, 26, 26);*/
 
 }
 #ptt {
-    background-color: rgb(104, 50, 50);
+	background-color: rgb(108, 158, 187);
     text-align: center;
-    bottom: 20px;
+	color:rgb(56, 60, 63);
+
 }
 #informations {
     width:1000px;
@@ -151,8 +167,10 @@ main {
 	
 }
 #pt {
-    background-color: rgb(104, 50, 50);
+	background-color: rgb(108, 158, 187);
     text-align: center;
+	color:rgb(56, 60, 63);
+
 }
 #photoProfil {
 	display:inline-block;
@@ -160,7 +178,7 @@ main {
     height:280px;
     position:relative;
     border:black;
-	background-color:rgb(27, 26, 26);
+	/*background-color:rgb(27, 26, 26);*/
     top: 10px;
 }
 .an {
@@ -172,8 +190,8 @@ main {
 	width:600px;
     height:280px;
     padding:10px;
-	background-color:rgb(27, 26, 26);
-    top: 130px;
+	/*background-color:rgb(27, 26, 26);*/
+    top: 110px;
 
 }
 
@@ -188,10 +206,16 @@ main {
     text-align: center;
 }
 #Des {
-    background-color: black;
+	background-color: rgb(108, 158, 187);
     width:996px;
     color: rgb(230, 221, 215);
     text-align: left;
+}
+#Desc {
+	background-color: rgb(108, 158, 187);
+    width:996px;
+    color: rgb(230, 221, 215);
+    text-align: center;
 }
 footer {
 	width:1000px;
