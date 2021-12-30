@@ -5,24 +5,23 @@ require_once 'cont_annonce.php';
 class ModAnnonce{
 
     private $controleur;
-    private $action;
 
     public function __construct() {
-        $this->controleur = new ContAnnonce();   
-        $this->action = $this->choixAction();  
 
-        $this->controleur->affichagePage($this->action); 
+        $this->controleur = new ContAnnonce();     
         
-    }    	
-
-    public function choixAction() { 
         if (isset($_GET['action'])) { 
-            return $_GET['action'];
+            $this->controleur->action = $_GET['action'];
         }
         else {
-            return 'newAnnonce';    
+            $this->controleur->action = 'depotAnnonce';    
         }
-    }
+
+        $this->controleur->affichage();
+
+    }    	    
+
+
     
 
 }

@@ -1,39 +1,68 @@
 <?php
 
-require_once (__DIR__.'/../connexion.php');
+require_once (__DIR__.'/../../connexion.php');
 
 
 class ModeleAnnonce {
+
+    // id de l'annonceur
+    private $idUser;
 
     public function __construct(){
 
     }
 
-    
 
-    public function ajout($idAnnonce, $idUser, $desc, $idImage, $idLogement) {
-
+    public function getIdUser() {
       
-      $requetePrep = Connexion::$bdd->prepare("select idUtilsateur from Utilisateurs where idUtilisateur=(select max(idUtilisateur) from Utilisateurs)");
-      $requetePrep->execute();
-		  $tuple = $requetePrep->fetchAll();
-      $idUser = $tuple['idUtilisateur'];
+      	// On récupère l'id de l'annonceur
+		$requeteID = Connexion::$bdd->prepare("select idUtilsateur from Logement where idUtilisateur=(select max(idUtilisateur) from Utilisateurs)");
+		$requeteID->execute([$idUtilisateur]);
+		$resultRequete = $requeteID->fetch();
+		$idUser = $resultRequete["idUtilisateur"]; 
+    }
 
-      
-      $requetePrep = Connexion::$bdd->prepare("select id from Utilisateurs where idUtilisateur=(select max(idUtilisateur) from Utilisateurs)");
-      $requetePrep->execute();
-		  $tuple = $requetePrep->fetchAll();
-      $idUser = $tuple['idUtilisateur'];
+	private function getIdLogement(){
 
-      $idUser = Connexion::$bdd->prepare("select id from Utilisateurs where id=(select max(id) from Utilisateurs)");  
-      // insert nouveau logeement  
-      $requetePrep = Connexion::$bdd->prepare("insert into Logement values(?, ?, NOW(), 0, ?, ?, ?)");
-      $requetePrep->execute([$idAnnonce, $idUser, $desc, $idImage, $idLogement]);
-
-      // insert nouvelle annonce  
-      $requetePrep = Connexion::$bdd->prepare("insert into Annonce values(?, ?, NOW(), 0, ?, ?, ?)");
-      $requetePrep->execute([$idAnnonce, $idUser, $desc, $idImage, $idLogement]);
+	  	// On récupère l'id de l'annonceur
+		$requeteID = Connexion::$bdd->prepare("select idLogement from Logement where idLogement=(select max(idLogement) from Logement)");
+		$requeteID->execute([$idLogement]);
+		return $requeteID->fetch(); 
 	}
+
+	public function ajoutLogement($superficie, $type, $nbChambre, $prix){
+
+		//$idLocalisation = newIdLocalisation();
+
+		// insert nouveau logement  
+		$sql = "insert into Logement (superficie, type, nbChambre, prix) values(?, ?, ?, ?)";
+		$requetePrep = Connexion::$bdd->prepare($sql);
+		$requetePrep->execute([$superficie, $type, $nbChambre, $prix]);
+
+		// On l'id logement
+		$idLogement = getIdLogement(); 
+		return $idLogement;
+	} 
+
+    public function depotAnnonce($desc, $idImage, $idLogement) {
+
+		// On récupère l'id de l'annonceur
+		$this->getIdUser();
+		
+		//On incrémente les id car c'est une nvlle entrée
+		$idLogement = ajoutLogement();
+		
+		// insert nouvelle annonce  
+		$sql = "insert into Annonce (idUtilisateur, dateCreation, description, idLogement) values(?, NOW(), ?, ?, ?)";
+
+		$requetePrep = Connexion::$bdd->prepare($sql);
+		$requetePrep->execute([$idUtilisateur, $desc, $idImage, $idLogement]);
+  	}
+
+
+
+
+  
 }
 
 ?>
