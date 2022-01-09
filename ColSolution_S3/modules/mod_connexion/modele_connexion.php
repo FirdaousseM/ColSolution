@@ -1,42 +1,15 @@
 <?php
 session_start();
 require_once 'connexion.php';
-//require_once(realpath(dirname(__FILE__) . 'connexion.php'));
-//require_once(realpath($_SERVER["DOCUMENT_ROOT"]) .'/mysite/php/includes/dbconn.inc');
 
 
 class ModeleConnexion extends Connexion{
 
-//	public $email;
-//	public $mdp;
     public function __construct(){
 		
 	}
 
-/*	function getUtilisateur(){
-		$laPreparation = self::$bdd->prepare('SELECT * FROM Utilisateurs WHERE email = ?');
-		$laPreparation->execute();
-		$testFetch = $laPreparation->fetchAll();
-		return $testFetch;
-	}
 
-	function form_ajout(){
-		if (isset($_POST['email'], $_POST['pass'])) {
-		$email = $_POST['email'];
-		$pass = $_POST['pass'];
-
-		if(filter_var($email, FILTER_VALIDATE_EMAIL))
-		{
-		$hashmdp = password_hash($mdp, PASSWORD_DEFAULT);
-		$laPreparation = self::$bdd->prepare('INSERT INTO Utilisateurs(email, mdp) VALUES($email, $hashmdp)');
-		$table=array($_POST['email'], $_POST['pass']);
-		$laPreparation->execute($table);
-		$testFetch = $laPreparation->fetchAll();
-		return $testFetch;
-		}
-	}
-	}*/	
-	
 function connexion(){
 		$a = new Connexion();
 		$bdd = $a->initConnexion();

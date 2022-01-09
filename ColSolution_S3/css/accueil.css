@@ -36,6 +36,7 @@ height: 100px;
 	text-align: center;
 	font-weight: bold;
 }
+
 #searchbar {
     width: 400px;
     display:inline-block;
@@ -45,6 +46,7 @@ height: 100px;
     position: relative;
 
 }
+
 header img {
 	width:170px;
 	height:120px;
@@ -159,6 +161,7 @@ main h3 {
 	display:block;
 	position:relative;
 }
+
 #an1 img{
 	width:300px;
     height: 200px;
@@ -191,10 +194,12 @@ main h3 {
 	position:relative;
 	top:15px;
 }
+
 #an2 img {
     width:300px;
     height: 200px; 
 }
+
 #an2_pic {
 	position:relative;
 	display:inline-block;
@@ -214,19 +219,18 @@ main h3 {
     top: 48px;
 }
 
-
-
-
 #an3 {
 	margin-top:200px;
 	width:1000px;
 	display:block;
 	position:relative;
 }
+
 #an3 img {
     width: 300px;
     height: 200px;
 }
+
 #an3_pic {
 	display:inline-block;
 	width:300px;
