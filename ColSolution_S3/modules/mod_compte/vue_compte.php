@@ -23,7 +23,7 @@ if(!$_SESSION['email']) header('Location:../index.php?module=form&action=connexi
 		<!-- en tête de page-->
 		<p id="pp"> Vous recherchez un colocataire? Vous êtes au bon endroit </p> 
 		<HEADER>
-			<a href="accueil.php"> <img class="logo" src="../images/logo2.png" alt="Logo du site"/> </a>
+			<a href="index.php"> <img class="logo" src="../images/logo2.png" alt="Logo du site"/> </a>
             <input id="searchbar" type="text" name="search" placeholder="Recherche..." />
 		</HEADER>
 		<!-- menu de navigation -->	
@@ -32,7 +32,7 @@ if(!$_SESSION['email']) header('Location:../index.php?module=form&action=connexi
 				<a class="menuLink" href="message.php">  <img class="icons" src="../images/icons/messa.png" alt=""/>Messages </a>
 			</nav>
 			<nav id="Annonce">
-				<a class="menuLink" href="DepoAnnonce.php"> <img class="icons" src="../images/icons/map-marker.png" alt=""/> Deposer Annonce </a>
+				<a class="menuLink" href="index.php?module=mod_annonce&&action=depotAnnonce"> <img class="icons" src="../images/icons/map-marker.png" alt=""/> Deposer Annonce </a>
                 <a class="menuLink" href="recherche.php"> <img class="icons" src="../images/sr.png" alt=""/> Rechercher Annonce </a>				
             </nav>
 			<nav id="menusCompte">
@@ -72,7 +72,7 @@ if(!$_SESSION['email']) header('Location:../index.php?module=form&action=connexi
 </MAIN>
                     <!-- footer -->
 		    <FOOTER>
-			<a href="accueil.php"> <img src="../images/logo.png" alt="Logo du site"/> </a>
+			<a href="index.php"> <img src="../images/logo.png" alt="Logo du site"/> </a>
 			<p> 2021 - COLSOLUTION - Creative Common Licence</p>
 		    </FOOTER>
 	</BODY>

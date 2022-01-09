@@ -1,70 +1,85 @@
 <?php
 
-include_once 'modele_annonce.php';
-include_once 'vue_annonce.php';
 
-class ContAnnonce {
+require_once 'modele_annonce.php';
+require_once 'vue_annonce.php';
+
+class ContAnnonce{
 
     private $modele;
-    private $vue;
-    public $action;
+	private $vue;
+	public $action;
 
-    public function __construct() {
-        //$this->modele = new ModeleAnnonce();
-        $this->vue = new VueAnnonce();
-    }
-    
-    public function choixAction() { 
-       
-        
-    }
-
-    public function affichage(){
-
-        switch($this->action){
-            
-            case 'depotAnnonce': $this->vue->depotAnnonceAffichage(); 
-            break;
-            /*
-            case 'annonceDeposee': 
-                echo 'test4';
-                $this->vue->depotAnnonceAffichage();
-                $this->ajouterAnnonce();
-            break;
-            case 'chercheAnnonce': ; 
-            break;
-            case 'consultAnnonce': ;
-            break;
-             */
-        }
-    }
-    
-    /*
-    * On récupère, de la Vue, les données rentrées par User,
-    * et on les envoie, au modèle, pour faire le insert en SQL
-	*/
-    /*
-    public function ajouterAnnonce() {
-        
-        echo 'test5';
-        $titre = isset($_POST['titre']) ? $_POST['titre'] : NULL;
-        $type = isset($_POST['type']) ? $_POST['type'] : NULL;
-        $superficie = isset($_POST['superficie']) ? $_POST['superficie'] : NULL;
-        $nbChambre = isset($_POST['nbChambre']) ? $_POST['nbChambre'] : NULL;
-        $prix = isset($_POST['prix']) ? $_POST['prix'] : NULL;
-        $desc = isset($_POST['desc']) ? $_POST['desc'] : NULL;
-
-        $idLogement = $this->modele->ajoutLogement($superficie, $type, $nbChambre, $prix);
-        $this->modele->depotAnnonce($desc, $idImage, $idLogement);
-        
-
+	public function __construct(){
+		$this->modele = new ModeleAnnonce();
+		$this->vue = new VueAnnonce();
+		
+		if(isset($_GET['action'])){
+			$this->action = $_GET['action'];
+		}
+		else{
+			$this->action = "depotAnnonce";
+		}
 	}
 
+	public function switchAction(){
+		
+		switch($this->action){
+     
+            case "depotAnnonce":
+                //$this->controleur->annonce();
+                $this->form_depotAnnonce();
+            break;
+            
+            case "consultAnnonce":
+                $this->consulterAnnonce();
+			break;	
 
-    public function getVue(){
-        return $this->vue;
+        }
+	}
+
+    public function consulterAnnonce() {
+
+		// INFO ANNONCE
+		$tabAnnonce = $this->modele->getInfoAnnonce(1);		
+
+		$titre = $tabAnnonce[0]["titre"];
+		$desc = $tabAnnonce[0]["description"];
+		
+		// INFO LOGEMENT
+		$tabLogement = $this->modele->getInfoLogement(1);
+
+		$prix = $tabLogement[0]["prix"];
+		$type = $tabLogement[0]["type"];
+		$superficie = $tabLogement[0]["superficie"];
+		$nbChambre = $tabLogement[0]["nbChambre"];
+
+		// INFO LOCALISATION
+		$tabLocalisation = $this->modele->getInfoLocalisation(1);
+
+		$metro = $tabLocalisation[0]["presMetro"] == 1 ? "oui" : "non";
+		$bus = $tabLocalisation[0]["presBus"] == 1 ? "oui" : "non";
+
+		$train = $tabLocalisation[0]["presTrain"] == 1 ? "oui" : "non";
+		$tram = $tabLocalisation[0]["presTram"] == 1 ? "oui" : "non";
+		$commerce = $tabLocalisation[0]["presCommerce"] == 1 ? "oui" : "non";
+
+		// INFO USER
+		$tabUser = $this->modele->getInfoUser(1);
+
+		$prenom = $tabUser[0]["prenom"];
+		$num = $tabUser[0]["NUMTEL"];
+
+        $this->vue->consulterAnnonce($titre, $desc, $prix, $type, $superficie, $nbChambre, $metro, $bus, $train, $tram, $commerce, $prenom, $num);
+
     }
-    */
-}
 
+	public function form_depotAnnonce(){
+		$this->vue->form_depotAnnonce();
+	}
+
+	public function annonce(){
+		$this->modele->depotAnnonce();
+	}
+}
 ?>

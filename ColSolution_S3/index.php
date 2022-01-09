@@ -20,7 +20,6 @@
 		break;
 		case 'mod_inscription': $controleur->moduleChoisi = new ModInscription();
 		break;
-		
 	} 
   
   

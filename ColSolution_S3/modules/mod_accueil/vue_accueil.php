@@ -19,7 +19,8 @@ class VueAccueil {
 			<HEAD>
 				<TITLE> Colsolution </TITLE>
 				<META CHARSET="UTF-8">
-				<link href="css/style.css" rel="stylesheet" type="text/css" />
+				<link href="css/accueil.css" rel="stylesheet" type="text/css" />
+
 			</HEAD>
 			
 			<BODY>
@@ -71,8 +72,7 @@ class VueAccueil {
 							<div id="an1"> 
 							
 								<div id="an1_pic">
-							
-									<a href="DepoAnnonce.php"> <img class="an" src="images/annoncee.png" alt="annonce"/> </a>
+									<a href="index.php?module=mod_annonce&&action=consultAnnonce"> <img class="an" src="images/annoncee.png" alt="annonce"/> </a>
 								</div>
 
 								<div id="an1_text">
@@ -94,11 +94,11 @@ class VueAccueil {
 
 								<div id="an2_text">
 								
-								<h3> TITRE ANNONCE 2 </h3>
+									<h3> TITRE ANNONCE 2 </h3>
+								
+									<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="DepoAnnonce.php"> [Lire la suite] </a>
 							
-								<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="DepoAnnonce.php"> [Lire la suite] </a>
-							
-							</div>
+								</div>
 							</div>
 							<div id="an3">
 								<div id="an3_pic">
@@ -108,11 +108,11 @@ class VueAccueil {
 
 								<div id="an3_text">
 								
-								<h3> TITRE ANNONCE 3 </h3>
+									<h3> TITRE ANNONCE 3 </h3>
+								
+									<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="DepoAnnonce.php"> [Lire la suite] </a>
 							
-								<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="DepoAnnonce.php"> [Lire la suite] </a>
-							
-							</div>
+								</div>
 							
 							</div>
 							
@@ -126,11 +126,11 @@ class VueAccueil {
 
 								<div id="an4_text">
 								
-								<h3> TITRE ANNONCE 4 </h3>
-							
-								<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="DepoAnnonce.php"> [Lire la suite] </a>
-							
-							</div>
+									<h3> TITRE ANNONCE 4 </h3>
+								
+									<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="DepoAnnonce.php"> [Lire la suite] </a>
+								
+								</div>
 							
 							</div>
 							
@@ -142,23 +142,15 @@ class VueAccueil {
 				</MAIN>
 				
 				
-				<!-- footer -->
-				
+				<!-- footer -->	
 				
 				<FOOTER>
 				
-					<a href="modules/mod_accueil/accueil.php"> <img src="images/logo.png" alt="Logo du site"/> </a>
-					
-					
+					<a href="index.php"> <img src="images/logo.png" alt="Logo du site"/> </a>
 					<p> 2021 - COLSOLUTION - Creative Common Licence</p>
 
-				
 				</FOOTER>
-			
-			
-			
-			
-			
+
 			</BODY>
 
 
