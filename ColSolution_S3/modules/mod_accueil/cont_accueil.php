@@ -15,6 +15,9 @@ class ContAccueil{
     
     }
 
+    function getCookie() {
+        $this->modele->cookie();
+    }
 }
 
 
