@@ -1,9 +1,14 @@
 <?php
-//session_start();
-class VueConnexion {
+class VueConnexion{
 
-function form_connexion(){
-?>
+	function form_connexion(){
+		if(isset($_SESSION['idUtilisateur'])) {
+            header('Location:index.php?module=compte&action=compte&idUtilisateur='.$_SESSION['idUtilisateur']);
+        }
+		if (isset($_GET['annonce']) AND !empty($_GET['annonce'])){
+			header('Location:index.php');
+		 }
+?>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,39 +16,50 @@ function form_connexion(){
 	<title>COLSOLUTION</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/connexion.css">
 </head>
+	</br>
+	</br>
+<p id="pp"> Bienvenue sur COLSOLUTION </p>
 <body>
-<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-form-title" style="background-image: url(images/bg2.png);">
-					<span class="login100-form-title-1">
-						Sign In
-					</span>
-				</div>
-				<form class="login100-form validate-form" method="POST" action="index.php?module=connexion&action=form">
+<HEADER>
+			<a href="index.php"> <img class="logo" src="images/COL.png" alt="Logo du site"/> </a>
+            <form id="searchbar" method = "GET">
+			<input id="searchbar" type="search" name="annonce" placeholder="Recherche..." />
+			</form>
+			<!-- <input id="euh" type="submit" value="Valider" /> -->
+	
+		</HEADER>
+		
+		<!-- menu de navigation -->
+		
+		<NAV id="mainNav">
+		
+			<nav id="menusMessage">
+			
+				<a class="menuLink" href="index.php?module=message&action=message">  <img class="icons" src="images/icons/messa.png" alt=""/>Messages </a>
+			
+			</nav>
+			<nav id="Annonce">
+			
+				<a class="menuLink" href="index.php?module=annonce&action=depotAnnonce"> <img class="icons" src="images/icons/map-marker.png" alt=""/> Deposer Annonce </a>
+                <a class="menuLink" href="index.php?module=recherche&action=Users"> <img class="icons" src="images/sr.png" alt=""/> Rechercher Annonce </a>				
+			
+            </nav>
+			
+			<nav id="menusCompte">
+			
+				<a class="menuLink" href="index.php?module=form&action=connexion"> <img class="icons" src="images/icons/favicon.ico" alt=""/> Mon Compte </a>
+			
+			</nav>
+		</NAV>		
+		<!-- corps de page -->
+		<MAIN>
+			<h2> CONNEXION </h2>
+				<form class="login100-form validate-form" method="POST" action="">
 				<form class="login100-form validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">email</span>
@@ -59,12 +75,11 @@ function form_connexion(){
 
 					<div class="flex-sb-m w-full p-b-30">
 						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember">
+							<label class="label-checkbox100" for="ckb1" >
 								Remember me
 							</label>
 					</div>
-
 						<div>
 							<a href="#" class="txt1">
 								Forgot Password?
@@ -74,7 +89,7 @@ function form_connexion(){
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" name = "submit">
-							Login
+							Connexion
 						</button>
 					</div>
 				</form>
@@ -82,28 +97,15 @@ function form_connexion(){
 		</div>
 	</div>
 	
-	
-	
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
-</body>
-</html>
-<?php
-	 }
+	</MAIN>
+		<!-- footer -->
+		<FOOTER>
+			<a href="index.php"> <img src="images/COL.png" alt="Logo du site"/> </a>
+			<p> 2021 - COLSOLUTION - Creative Common Licence</p>
+		</FOOTER>
+	</BODY>
+</HTML>
+<?php 
 	}
+}
 ?>
