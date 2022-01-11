@@ -13,34 +13,20 @@ function connexion(){
 		$a = new Connexion();
 		$bdd = $a->initConnexion();
 		if (isset($_POST['submit'])) {
-			
+
 			if(!empty($_POST['email']) AND !empty($_POST['pass']))
-			{	
-				$adminMAIL = "admin@admin.fr" ;
-				$adminPASS = sha1("admin");
+			{
 				$email = htmlspecialchars($_POST['email']);
 				$pass = sha1($_POST['pass']);
 				$check = $bdd->prepare("SELECT * FROM Utilisateurs WHERE email = ? AND mdp = ?");
 				$check->execute(array($email,$pass));
 				$row = $check->rowCount();
-				$data = $check->fetch();
-
-				if($email == $adminMAIL AND $pass == $adminPASS) {
-					$_SESSION['email'] = $adminMAIL;
-					$_SESSION['mdp'] = $adminPASS;
-					header("Location:index.php?module=compte&action=admin");
-				} 
-				
-			else {
-
+		
 			if ($row > 0)
 			{
 				if(filter_var($email, FILTER_VALIDATE_EMAIL))
 				{
-					if(isset($_POST['remember'])) {
-						$cookie = new connexion();
-						$cookie ->cookies();
-					}
+					$data = $check->fetch();
 					$_SESSION['idUtilisateur'] = $data['idUtilisateur'];
 					$_SESSION['nom'] = $data['nom'];
 					$_SESSION['prenom'] = $data['prenom'];
@@ -50,7 +36,7 @@ function connexion(){
 					$_SESSION['NUMTEL'] = $data['NUMTEL'];
 					$_SESSION['avatar'] = $data['avatar'];
 					$_SESSION['description'] = $data['description'];
-					header("Location:index.php?module=compte&action=compte&idUtilisateur=".$_SESSION['idUtilisateur']);	 
+					header('Location:index.php?module=compte&action=compte'); 		 
 				} 
 			}
 			else 
@@ -58,7 +44,6 @@ function connexion(){
 				header('Location:index.php?module=inscription&action=inscription'); 			
 			}
 		}
-			}
 	}
 	}
 
