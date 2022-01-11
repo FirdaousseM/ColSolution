@@ -1,53 +1,33 @@
 <?php
 
-include_once 'modele_annonce.php';
-include_once 'vue_annonce.php';
+require_once 'modele_annonce.php';
+require_once 'vue_annonce.php';
+require_once 'mod_annonce.php';
 
-class ContAnnonce {
+class ContAnnonce{
 
-    private $modele;
-    private $vue;
+    public $modele;
+	public $vue;
+	public $action;
 
-    public function __construct() {
-        $this->modele = new ModeleAnnonce();
-        $this->vue = new VueAnnonce();
-    }
-    
-    public function affichagePage($action){
-         
-        switch($action){
-
-            case 'newAnnonce': $this->vue->depotAnnonceAffichage(); 
-            break;
-            case 'chercheAnnonce': ; 
-            break;
-            case 'consultAnnonce': ;
-            break;
-        }      
-    }
-
-    /*
-    * On récupère, de la Vue, les données rentrées par User,
-    * et on les envoie, au modèle, pour faire le insert en SQL
-	*/
-    public function ajouterAnnonce() {
-		
-		
-		if ($this->action == 'ajout'){
-			
-			$identifiant = isset($_POST['identifiant']) ? $_POST['identifiant'] : NULL;
-			$nom = isset($_POST['nom']) ? $_POST['nom'] : NULL;
-			$desc = isset($_POST['desc']) ? $_POST['desc'] : NULL;
-            $desc = isset($_POST['desc']) ? $_POST['desc'] : NULL;
-			$desc = isset($_POST['desc']) ? $_POST['desc'] : NULL;
-
-
-			$this->m->ajout($identifiant, $nom, $desc);
+	public function __construct(){
+		$this->modele = new ModeleAnnonce();
+		$this->vue = new VueAnnonce();
+		if(isset($_GET['action'])){
+			$this->action = $_GET['action'];
 		}
-		echo '<br/>'.$this->action;
-
+		else{
+			$this->action = "connexion";
+		}
 	}
 
+	function form_depotAnnonce(){
+		$this->vue->form_depotAnnonce();
+	}
 
+	function annonce(){
+		$this->modele->annonce();
+	}
 }
-?>
+
+    ?>
