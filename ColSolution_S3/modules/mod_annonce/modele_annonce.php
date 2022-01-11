@@ -3,13 +3,16 @@
 require_once 'connexion.php';
 
 
-class ModeleAnnonce extends Connexion{
+class ModeleAnnonce{
 
     public function __construct(){
 		
 	}
 
+	/* DEPOSER ANNONCE */
+
 	public function annonce(){
+		
 		$co = new Connexion();
 		$bdd = $co->initConnexion();
 
@@ -34,23 +37,23 @@ class ModeleAnnonce extends Connexion{
 						$datetime=$date."T".$time;
 
 						// insertion annonce
-						$insAnnonce = $bdd->prepare('INSERT INTO Annonce(titre,dateCreation,description,idUtilisateur) VALUES (?,?,?,?)');
-						$insAnnonce->execute(array($titre,$datetime,$description,$_SESSION['idUtilisateur']));
+						$insAnnonce = $bdd->prepare("INSERT INTO Annonce(titre, dateCreation, description, idUtilisateur) VALUES (?,?,?,?)");
+						$insAnnonce->execute(array($titre, $datetime, $description, $_SESSION['idUtilisateur']));
 
-						//insertion localisation
-						$insLocalisation = $bdd->prepare('INSERT INTO Localisation(ville,quartier,rue,codePostal) VALUES (?,?,?,?)');
-						$insLocalisation->execute(array($ville,$quartier,$rue,$codePostal));
+						// insertion localisation
+						$insLocalisation = $bdd->prepare("INSERT INTO Localisation(ville, quartier, rue, codePostal) VALUES (?,?,?,?)");
+						$insLocalisation->execute(array($ville, $quartier, $rue, $codePostal));
 
 						// selection de l'id de la localisation dans une variable
-						$idLocalisation = $bdd->prepare('SELECT idLocalisation FROM Localisation WHERE ville = ? ORDER BY idLocalisation DESC');
+						$idLocalisation = $bdd->prepare("SELECT idLocalisation FROM Localisation WHERE ville = ? ORDER BY idLocalisation DE SC");
 						$idLocalisation->execute(array($ville));
 						$idLocalisation = $idLocalisation->fetch();
 						$idLocalisation = $idLocalisation['idLocalisation'];
 
 						// insertion du logement
-						$insLogement = $bdd->prepare('INSERT INTO Logement(superficie,type,nbChambre,prix,idLocalisation) VALUES (?,?,?,?,?)');
-						$insLogement->execute(array($superficie,$type,$nbChambres,$prix,$idLocalisation));
-						header('Location:index.php');
+						$insLogement = $bdd->prepare("INSERT INTO Logement(superficie, type, nbChambre, prix, idLocalisation) VALUES (?,?,?,?,?)");
+						$insLogement->execute(array($superficie, $type, $nbChambres, $prix, $idLocalisation));
+						//header('Location:index.php');
 
 					}
 				}
@@ -58,7 +61,15 @@ class ModeleAnnonce extends Connexion{
     	}
 	}    
 
+	
 
+
+	/* CONSULTER ANNONCE */
+
+
+	/*** récupère les informations d'une annonce : ***/
+
+	// - dans la table annonce
 	public function getInfoAnnonce($idAnnonce) {
 		
 		$co = new Connexion();
@@ -71,6 +82,7 @@ class ModeleAnnonce extends Connexion{
 		return $tab;
 	}
 
+	// - dans la table Logement
 	public function getInfoLogement($idAnnonce){
 
 		$co = new Connexion();
@@ -86,6 +98,7 @@ class ModeleAnnonce extends Connexion{
 		return $tab;
 	}
 
+	// - dans la table Localisation
 	public function getInfoLocalisation($idAnnonce){
 		$co = new Connexion();
 		$bdd = $co->initConnexion();
@@ -99,6 +112,7 @@ class ModeleAnnonce extends Connexion{
 		return $tab;
 	}
 
+	// - dans la table Utilisateur
 	public function getInfoUser($idAnnonce){
 		$co = new Connexion();
 		$bdd = $co->initConnexion();

@@ -44,11 +44,11 @@ class VueAnnonce {
 
 					<nav id="Annonce">
 						<a class="menuLink" href="index.php?module=mod_annonce&&action=depotAnnonce"> <img class="icons" src="images/icons/map-marker.png" alt=""/> Deposer Annonce </a>
-						<a class="menuLink" href="recherche.php"> <img class="icons" src="images/sr.png" alt=""/> Rechercher Annonce </a>				
+						<a class="menuLink" href="index.php?module=mod_recherche&action=Users.php"> <img class="icons" src="images/sr.png" alt=""/> Rechercher Annonce </a>				
 					</nav>
 					
 					<nav id="menusCompte">
-						<a class="menuLink" href="index.php?module=mod_compte"> <img class="icons" src="images/icons/favicon.ico" alt=""/> Mon Compte </a>
+						<a class="menuLink" href="index.php?module=mod_compte&action=compte"> <img class="icons" src="images/icons/favicon.ico" alt=""/> Mon Compte </a>
 					</nav>
 
 				</NAV>
@@ -129,12 +129,12 @@ class VueAnnonce {
 	
 
 	public function form_depotAnnonce(){
-        if(!$_SESSION['email']) header('Location:../index.php?module=form&action=connexion');
+        //if(!$_SESSION['email']) header('Location:../index.php?module=form&action=connexion');
 	?>	
 	<!-- PAGE ACCUEIL COLSOLUTION -->
 	<HTML>
 		<HEAD>
-			<TITLE> Colsolution </TITLE>
+			<TITLE> Colsolution - déposez votre annonce </TITLE>
 			<META CHARSET="UTF-8">
 
 

@@ -22,21 +22,7 @@ class ContAnnonce{
 		}
 	}
 
-	public function switchAction(){
-		
-		switch($this->action){
-     
-            case "depotAnnonce":
-                //$this->controleur->annonce();
-                $this->form_depotAnnonce();
-            break;
-            
-            case "consultAnnonce":
-                $this->consulterAnnonce();
-			break;	
 
-        }
-	}
 
     public function consulterAnnonce() {
 
@@ -59,7 +45,6 @@ class ContAnnonce{
 
 		$metro = $tabLocalisation[0]["presMetro"] == 1 ? "oui" : "non";
 		$bus = $tabLocalisation[0]["presBus"] == 1 ? "oui" : "non";
-
 		$train = $tabLocalisation[0]["presTrain"] == 1 ? "oui" : "non";
 		$tram = $tabLocalisation[0]["presTram"] == 1 ? "oui" : "non";
 		$commerce = $tabLocalisation[0]["presCommerce"] == 1 ? "oui" : "non";
@@ -69,6 +54,8 @@ class ContAnnonce{
 
 		$prenom = $tabUser[0]["prenom"];
 		$num = $tabUser[0]["NUMTEL"];
+
+		
 
         $this->vue->consulterAnnonce($titre, $desc, $prix, $type, $superficie, $nbChambre, $metro, $bus, $train, $tram, $commerce, $prenom, $num);
 

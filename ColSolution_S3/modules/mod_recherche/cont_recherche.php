@@ -2,7 +2,6 @@
 
 require_once 'modele_recherche.php';
 require_once 'vue_recherche.php';
-require_once 'mod_recherche.php';
 
 class ContRecherche{
 
@@ -28,7 +27,7 @@ class ContRecherche{
 	}
 
     
-	function form_compte(){
+	public function form_compte(){
 		$this->vue->form_recherche();
 	}
 

@@ -12,8 +12,18 @@ class ModAnnonce{
 		
 		$this->controleur = new ContAnnonce();
         
-        $this->controleur->switchAction();
-	}
+    switch($this->controleur->action){
+     
+      case "depotAnnonce":
+          $this->controleur->annonce();
+          $this->controleur->form_depotAnnonce();
+      break;
+      
+      case "consultAnnonce":
+          $this->controleur->consulterAnnonce();
+      break;	
+
+  }	}
 }
 
 ?>

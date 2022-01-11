@@ -45,14 +45,14 @@ class VueAccueil {
 					</nav>
 					<nav id="Annonce">
 					
-						<a class="menuLink" href="index.php?module=mod_annonce&&action=depotAnnonce"> <img class="icons" src="images/icons/map-marker.png" alt=""/> Deposer Annonce </a>
-						<a class="menuLink" href="recherche.php"> <img class="icons" src="images/sr.png" alt=""/> Rechercher Annonce </a>				
+						<a class="menuLink" href="index.php?module=mod_annonce&action=depotAnnonce"> <img class="icons" src="images/icons/map-marker.png" alt=""/> Deposer Annonce </a>
+						<a class="menuLink" href="index.php?module=mod_recherche&action=Users.php"> <img class="icons" src="images/sr.png" alt=""/> Rechercher Annonce </a>				
 					
 					</nav>
 					
 					<nav id="menusCompte">
 					
-						<a class="menuLink" href="index.php?module=mod_compte"> <img class="icons" src="images/icons/favicon.ico" alt=""/> Mon Compte </a>
+						<a class="menuLink" href="index.php?module=mod_compte&action=compte"> <img class="icons" src="images/icons/favicon.ico" alt=""/> Mon Compte </a>
 					
 					</nav>
 
@@ -72,14 +72,14 @@ class VueAccueil {
 							<div id="an1"> 
 							
 								<div id="an1_pic">
-									<a href="index.php?module=mod_annonce&&action=consultAnnonce"> <img class="an" src="images/annoncee.png" alt="annonce"/> </a>
+									<a href="index.php?module=mod_annonce&action=consultAnnonce"> <img class="an" src="images/annoncee.png" alt="annonce"/> </a>
 								</div>
 
 								<div id="an1_text">
 								
 									<h3> TITRE ANNONCE 1</h3>
 								
-									<p> BLABLABLABLABLABLABLABLABLALBABLABLA  </p> <a href="DepoAnnonce.php"> [Lire la suite] </a>
+									<p> BLABLABLABLABLABLABLABLABLALBABLABLA  </p> <a href="index.php?module=mod_annonce&action=consultAnnonce"> [Lire la suite] </a>
 								
 								</div>
 							
@@ -89,28 +89,28 @@ class VueAccueil {
 							
 								<div id="an2_pic">
 							
-									<a href="DepoAnnonce.php"> <img class="ann" src="images/annoncee.png" alt="an2"/> </a>
+									<a href="index.php?module=mod_annonce&action=consultAnnonce"> <img class="ann" src="images/annoncee.png" alt="an2"/> </a>
 								</div>
 
 								<div id="an2_text">
 								
 									<h3> TITRE ANNONCE 2 </h3>
 								
-									<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="DepoAnnonce.php"> [Lire la suite] </a>
+									<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="index.php?module=mod_annonce&action=consultAnnonce"> [Lire la suite] </a>
 							
 								</div>
 							</div>
 							<div id="an3">
 								<div id="an3_pic">
 							
-									<a href="DepoAnnonce.php"> <img class="an" src="images/annoncee.png" alt="an3"/> </a>
+									<a href="index.php?module=mod_annonce&action=consultAnnonce"> <img class="an" src="images/annoncee.png" alt="an3"/> </a>
 								</div>
 
 								<div id="an3_text">
 								
 									<h3> TITRE ANNONCE 3 </h3>
 								
-									<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="DepoAnnonce.php"> [Lire la suite] </a>
+									<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="index.php?module=mod_annonce&action=consultAnnonce"> [Lire la suite] </a>
 							
 								</div>
 							
@@ -121,14 +121,14 @@ class VueAccueil {
 							
 								<div id="an4_pic">
 							
-									<a href="DepoAnnonce.php"> <img class="ann" src="images/annoncee.png" alt="an4"/> </a>
+									<a href="index.php?module=mod_annonce&action=consultAnnonce"> <img class="ann" src="images/annoncee.png" alt="an4"/> </a>
 								</div>
 
 								<div id="an4_text">
 								
 									<h3> TITRE ANNONCE 4 </h3>
 								
-									<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="DepoAnnonce.php"> [Lire la suite] </a>
+									<p> BLABLABLABLABLABLABLABLABLALBABLABLA </p> <a href="index.php?module=mod_annonce&action=consultAnnonce"> [Lire la suite] </a>
 								
 								</div>
 							

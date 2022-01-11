@@ -8,7 +8,7 @@ class VueCompte{
 	function form_compte(){
 	?>  
 <?php
-if(!$_SESSION['email']) header('Location:../index.php?module=form&action=connexion');
+if(!$_SESSION['email']) header('Location:index.php?module=mod_connexion&action=connexion');
 ?>
 <!DOCTYPE html>
 
