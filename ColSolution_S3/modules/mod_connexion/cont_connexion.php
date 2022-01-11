@@ -34,9 +34,8 @@ class ContConnexion{
 		$this->modele -> connexion();
 	}
 
-	//function form_deconnexion(){
-	//	VueConnexion::form_deconnexion();
-	//}
+
+	
 
 	function deconnexion(){
 		$this->modele ->deconnexion();
