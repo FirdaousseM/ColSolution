@@ -9,48 +9,62 @@ class ModeleConnexion extends Connexion{
 		
 	}
 
-
 function connexion(){
 		$a = new Connexion();
 		$bdd = $a->initConnexion();
-		if (isset($_POST['email'], $_POST['pass'])) {
+		if (isset($_POST['submit'])) {
+			
+			if(!empty($_POST['email']) AND !empty($_POST['pass']))
+			{	
+				$adminMAIL = "admin@admin.fr" ;
+				$adminPASS = sha1("admin");
+				$email = htmlspecialchars($_POST['email']);
+				$pass = sha1($_POST['pass']);
+				$check = $bdd->prepare("SELECT * FROM Utilisateurs WHERE email = ? AND mdp = ?");
+				$check->execute(array($email,$pass));
+				$row = $check->rowCount();
+				$data = $check->fetch();
 
-			$email = $_POST['email'];
-			$pass = $_POST['pass'];
-			$check = $bdd->prepare('SELECT email, mdp FROM Utilisateurs WHERE email = ?');
-			$check->execute(array($email));
-			$data = $check->fetch();
-			$row = $check->rowCount();
-		
+				if($email == $adminMAIL AND $pass == $adminPASS) {
+					$_SESSION['email'] = $adminMAIL;
+					$_SESSION['mdp'] = $adminPASS;
+					header("Location:index.php?module=compte&action=admin");
+				} 
+				
+			else {
+
 			if ($row > 0)
 			{
 				if(filter_var($email, FILTER_VALIDATE_EMAIL))
 				{
-					 if (password_verify($pass, $data["mdp"])) {
-						echo "Connexion effectuée";
-						$_SESSION['email'] = $email;
-						header('Location:global/compte.php');
-		
-					 }
-				 }
-			} 
-				else {			
-					 $b = new Connexion();
-				$hashpass = password_hash($pass, PASSWORD_DEFAULT);
-				$sql = $b->initConnexion();
-				$sql = "INSERT INTO Utilisateurs (email, mdp) VALUES ('$email', '$hashpass')";
-				$req = $bdd->prepare($sql);
-				$req->execute();
-				header('Location:index.php');
-				exit();    
-			
-				}
-				 }
+					if(isset($_POST['remember'])) {
+						$cookie = new connexion();
+						$cookie ->cookies();
+					}
+					$_SESSION['idUtilisateur'] = $data['idUtilisateur'];
+					$_SESSION['nom'] = $data['nom'];
+					$_SESSION['prenom'] = $data['prenom'];
+					$_SESSION['age'] = $data['age'];
+					$_SESSION['email'] = $data['email'];
+					$_SESSION['sexe'] = $data['sexe'];
+					$_SESSION['NUMTEL'] = $data['NUMTEL'];
+					$_SESSION['avatar'] = $data['avatar'];
+					$_SESSION['description'] = $data['description'];
+					header("Location:index.php?module=compte&action=compte&idUtilisateur=".$_SESSION['idUtilisateur']);	 
+				} 
 			}
+			else 
+			{			
+				header('Location:index.php?module=inscription&action=inscription'); 			
+			}
+		}
+			}
+	}
+	}
 
 	function deconnexion(){
         session_start(); // demarrage de la session
-        session_destroy(); // on détruit la/les session(s), soit si vous utilisez une autre session, utilisez de préférence le unset()
+        session_destroy(); // on détruit la/les session(s)
         header('Location:index.php'); // On redirige
         die();
 	}
