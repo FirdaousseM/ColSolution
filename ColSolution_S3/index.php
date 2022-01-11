@@ -1,44 +1,33 @@
+
 <?php
-
-	require_once 'controleur.php';
-    require_once 'connexion.php';
-    require_once 'vue.php';
-	require_once 'modules/mod_connexion/vue_connexion.php';
-	require_once 'modules/mod_connexion/mod_connexion.php';
-	require_once 'modules/mod_compte/mod_compte.php';
-	require_once 'modules/mod_recherches/mod_recherche.php';
-	require_once 'modules/mod_recherches/vue_recherche.php';
-	require_once 'modules/mod_accueil/mod_accueil.php';
-	require_once 'modules/mod_inscription/mod_inscription.php';
-	require_once 'modules/mod_modifCompte/mod_modifCompte.php';
-
-
-    $vue = new Vue();
-	$vueR = new VueRecherche();
-	$controleur = new controleur();
-
-	switch($controleur->module){
-		case "form":
-			$mod = new ModConnexion();
-			break;
-		case "compte":
-			$mod = new ModCompte();
-			break;
-		case "recherche":
-			$mod = new ModRecherche();
-			break;
-		case "inscription":
-			$mod = new ModInscription();
-			break;
-		case "modif":
-			$mod = new ModModifCompte();
-			break;
-		default :
-			$mod = new ModAccueil();
-	}
+ 
+ 	require_once 'controleur_general.php';
 	
+	session_start();
+	
+	$controleur = new ContGeneral();
+  
+	require_once "modules/$controleur->moduleDemande/$controleur->moduleDemande.php";
 
-
-
-
-
+  
+	switch($controleur->moduleDemande){
+  
+		
+		case 'mod_accueil': $controleur->moduleChoisi = new ModAccueil(); 
+		break;
+		case 'mod_compte': $controleur->moduleChoisi = new ModCompte(); 
+		break;
+		case 'mod_annonce': $controleur->moduleChoisi = new ModAnnonce();
+		break;
+		case 'mod_connexion': $controleur->moduleChoisi = new ModConnexion();
+		break;
+		case 'mod_recherche': $controleur->moduleChoisi = new ModRecherche();
+		break;
+		case 'mod_modifCompte': $controleur->moduleChoisi = new ModModifCompte();
+		break;
+	
+	} 
+  
+  
+ ?>
+ 
