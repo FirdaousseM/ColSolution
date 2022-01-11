@@ -2,6 +2,7 @@
 
 require_once 'modele_compte.php';
 require_once 'vue_compte.php';
+require_once 'mod_compte.php';
 
 class ContCompte{
 
