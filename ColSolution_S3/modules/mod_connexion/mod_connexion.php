@@ -12,7 +12,6 @@ class ModConnexion{
 
         switch($this->controleurr->action){
             case "connexion":
-                $contenu = $this->controleurr->form_connexion();
                 $this->controleurr->connexion();
                 break;
             case "deconnexion":

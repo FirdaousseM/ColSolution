@@ -7,8 +7,8 @@ class VueAnnonce {
 		
 	}
 
-	//
-	public function consulterAnnonce($titre, $desc, $prix, $type, $superficie, $nbChambre, $metro, $bus, $train, $tram, $commerce, $prenom, $num){
+	
+	public function consulterAnnonce($tabInfo){
 
 		echo'
 		<HTML>
@@ -23,105 +23,75 @@ class VueAnnonce {
 
 			</HEAD>
 			
-			<BODY>
+			<BODY>';
 			
-				<!-- en tête de page-->
-				<p id="pp"> Vous recherchez un colocataire ? Vous êtes au bon endroit </p> 
-
-				<HEADER>
-					<a href="index.php"> <img class="logo" src="images/logo2.png" alt="Logo du site"/> </a>
-
-					<input id="searchbar" type="text" name="search" placeholder="Recherche..." />
-				</HEADER>
-				
-				<!-- menu de navigation -->
-				
-				<NAV id="mainNav">
-				
-					<nav id="menusMessage">
-						<a class="menuLink" href="message.php">  <img class="icons" src="images/icons/messa.png" alt=""/>Messages </a>
-					</nav>
-
-					<nav id="Annonce">
-						<a class="menuLink" href="index.php?module=mod_annonce&&action=depotAnnonce"> <img class="icons" src="images/icons/map-marker.png" alt=""/> Deposer Annonce </a>
-						<a class="menuLink" href="index.php?module=mod_recherche&action=Users.php"> <img class="icons" src="images/sr.png" alt=""/> Rechercher Annonce </a>				
-					</nav>
-					
-					<nav id="menusCompte">
-						<a class="menuLink" href="index.php?module=mod_compte&action=compte"> <img class="icons" src="images/icons/favicon.ico" alt=""/> Mon Compte </a>
-					</nav>
-
-				</NAV>
-				
-				
+				include 'html/header.html';
+	
+				echo'
 				<!-- corps de page -->
 
 				<MAIN>
 					<section id="upSection">
-						<h1>'.$titre.'</h1>
+						<h1>'.$tabInfo['titre'].'</h1>
 						<div id="imgAnnonce">
-							<img src="images/annoncee.png" alt=""/>
+							<img src="public/annonces/'.$tabInfo['img'].'" alt="Image Annonce"/>
 							<button> <img src="images/icons/nextArrow.png" alt=""/></button>
-							<h2vv> '.$prix.'€ </h2>
+							<h2vv> '.$tabInfo['prix'].'€ </h2>
 							<img id="rating" src="images/icons/ratingImg.png" alt="note"/>			
 						</div>
 						<div id="infoAnnonce">
-							<p>'.$desc.'</p>
+							<p>'.$tabInfo['desc'].'</p>
 						</div>
 					</section>
 					<section id="downSection">
 						<div id="infoUser">
-							<img src="images/icons/userIcon.png" alt="" />
-							<p> '.$prenom.' <br/> '.$num.' </p>
+							<img src="public/avatars/'.$tabInfo['avatar'].'" alt="" />
+							<p> '.$tabInfo['prenom'].' <br/> '.$tabInfo['num'].' </p>
 						</div>
 						<div id="filtersBoxContainer">
 							<div class="filtersBox">
 								<p>Type</p>
-								<p class="valeurs">'.$type.'</p>
+								<p class="valeurs">'.$tabInfo['type'].'</p>
 							</div>
 							<div class="filtersBox">
 								<p>Superficie</p>
-								<p class="valeurs">'.$superficie.'</p>
+								<p class="valeurs">'.$tabInfo['superficie'].'</p>
 							</div>
 							<div class="filtersBox">
 								<p>Chambres</p>
-								<p class="valeurs">'.$nbChambre.'</p>
+								<p class="valeurs">'.$tabInfo['nbChambre'].'</p>
 							</div>
 							<div class="filtersBox">
 								<p>Metro</p>
-								<p class="valeurs">'.$metro.'</p>
+								<p class="valeurs">'.$tabInfo['metro'].'</p>
 							</div>
 							<div class="filtersBox">
 								<p>Bus</p>
-								<p class="valeurs">'.$bus.'</p>
+								<p class="valeurs">'.$tabInfo['bus'].'</p>
 							</div>
 							<div class="filtersBox">
 								<p>Train</p>
-								<p class="valeurs">'.$train.'</p>
+								<p class="valeurs">'.$tabInfo['train'].'</p>
 							</div>
 							<div class="filtersBox">
 								<p>Tram</p>
-								<p class="valeurs">'.$tram.'</p>
+								<p class="valeurs">'.$tabInfo['tram'].'</p>
 							</div>
 							<div class="filtersBox">
 								<p>Commerce</p>
-								<p class="valeurs">'.$commerce.'</p>
+								<p class="valeurs">'.$tabInfo['commerce'].'</p>
 							</div>
 							
 						</div>
 					</section>
 					
-				</MAIN>
-				
-				
-				<!-- footer -->	
-				
-				<FOOTER>
-				
-					<a href="index.php"> <img src="images/logo.png" alt="Logo du site"/> </a>
-					<p> 2021 - COLSOLUTION - Creative Common Licence</p>
+				</MAIN>	';
 
-				</FOOTER>
+				
+				
+				include 'html/footer.html';
+
+				echo'
 
 			</BODY>	
 		<HTML>';
@@ -129,7 +99,7 @@ class VueAnnonce {
 	
 
 	public function form_depotAnnonce(){
-        //if(!$_SESSION['email']) header('Location:../index.php?module=form&action=connexion');
+        //if(!$_SESSION['email']) header('Location:../index.php?module=mod_connexion&action=connexion');
 	?>	
 	<!-- PAGE ACCUEIL COLSOLUTION -->
 	<HTML>
@@ -139,48 +109,13 @@ class VueAnnonce {
 
 
 			<link rel="stylesheet" type="text/css" href="css/util.css">
-			<link rel="stylesheet" type="text/css" href="css/main.css">
-			<link href="css/annonce.css" rel="stylesheet" type="text/css" />
-
+			<link rel="stylesheet" type="text/css" href="css/accueil.css">
 		</HEAD>
 				
 		<BODY>
 				
-			<!-- en tête de page-->
-			</br>
-			<p id="pp"> Vous recherchez un colocataire ? Vous êtes au bon endroit </p> 
-			<HEADER>
-				<a href="index.php"> <img class="logo" src="images/COL.png" alt="Logo du site"/> </a>
-				<input id="searchbar" type="searchbar" name="search" placeholder="Recherche..." />
-				<input id="ok" type="submit" name="valider" Value="OK" />					
-				<div style ="margin-top:20px">
-				<div id="result"></div>
-				</div>
-				
+			<?php include 'html/header.html'; ?>
 			
-			</HEADER>
-			
-			<!-- menu de navigation -->
-			
-			<NAV id="mainNav">
-			
-				<nav id="menusMessage">
-				
-					<a class="menuLink" href="message.php">  <img class="icons" src="images/icons/messa.png" alt=""/>Accueil</a>
-				
-				</nav>
-				<nav id="Annonce">
-				
-					<a class="menuLink" href="index.php?module=message&action=reception"> <img class="icons" src="images/icons/map-marker.png" alt=""/>Boîte de réception </a>
-					<a class="menuLink" href="index.php?module=recherche&action=Users"> <img class="icons" src="images/sr.png" alt=""/>Message Envoyés</a>				
-				
-				</nav>
-				
-				<nav id="menusCompte">
-				
-					<a class="menuLink" href="index.php?module=inscription&action=inscription"> <img class="icons" src="images/icons/favicon.ico" alt=""/>Mon compte</a>
-				</nav>
-			</NAV>
 			<!-- corps de page -->
 			<MAIN>
 				<SECTION>
@@ -189,37 +124,47 @@ class VueAnnonce {
 					
 						<h2 id="haha" >DEPOSER UNE ANNONCE</h2>
 						
-						<form class="login100-form validate-form" method="POST" action="">
-						<form class="login100-form validate-form">
+						<form class="login100-form validate-form" method="POST" action="index.php">
+							<!-- TITRE -->	
 							<div class="wrap-input100 validate-input m-b-26" data-validate="Recipient is required">
 								<span class="label-input100">Titre</span>
-								<input class="input100" type="text" name="titre" value="" >
+								<input class="input100" type="text" name="titre"  >
 								<span class="focus-input100"></span>
 							</div>
+							<!-- SUPERFICIE -->
 							<div class="wrap-input100 validate-input m-b-26" data-validate="Recipient is required">
 								<span class="label-input100">Superficie</span>
-								<input class="input100" type="text" name="superficie" value="" >
-								<span class="focus-input100"></span>
+								<input class="input100" type="number" name="superficie"  >
+								<span class="focus-input100">m²</span>
 							</div>
-							
-							<div class="wrap-input100 validate-input m-b-26" data-validate="Recipient is required">
-								<span class="label-input100">Type</span>
-								<input class="input100" type="text" name="type" value="" >
-								<span class="focus-input100"></span>
+							<!-- TYPE -->
+							Type :
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="type" id="inlineRadio1" >
+								<label class="form-check-label" for="inlineRadio1">appart.</label>
 							</div>
-							
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="type" id="inlineRadio2" >
+								<label class="form-check-label" for="inlineRadio2">maison</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="type" id="inlineRadio3" >
+								<label class="form-check-label" for="inlineRadio3">studio</label>
+							</div>
+						
+							<!-- NB.CHAMBRE -->
 							<div class="wrap-input100 validate-input m-b-26" data-validate="Recipient is required">
 								<span class="label-input100">Nbre de chambres</span>
-								<input class="input100" type="text" name="nbChambre" value="" >
+								<input class="input100" type="number" name="nbChambre"  >
 								<span class="focus-input100"></span>
 							</div>
-							
+							<!-- PRIX -->
 							<div class="wrap-input100 validate-input m-b-26" data-validate="Recipient is required">
 								<span class="label-input100">Prix</span>
-								<input class="input100" type="text" name="prix" value="" >
-								<span class="focus-input100"></span>
+								<input class="input100" type="text" name="prix"  >
+								<span class="focus-input100">€</span>
 							</div>
-
+							<!-- LOCALISATION -->
 							<div class="wrap-input100 validate-input m-b-26" data-validate="Recipient is required">
 								<span class="label-input100">Localisation</span>
 								<input class="input100" type="text" name="ville" value="" placeholder="saisissez ici votre ville" >
@@ -228,24 +173,24 @@ class VueAnnonce {
 								<input class="input100" type="text" name="codePostal" value="" placeholder="votre code Postal">
 								<span class="focus-input100"></span>
 							</div>
-
+							<!-- DESCRIPTION -->
 							<div class="wrap-input100 validate-input m-b-18" data-validate = "Description is required">
 								<span class="label-input100">Description</span>
 								<textarea id="mess" name="description"
 								rows="5" cols="94">
-								Votre Description...
+								
 								</textarea>
 								<span class="focus-input100"></span>
 							</div>
 
-				
+							<!-- AJOUT IMAGE -->
 							<p> Ajouter une photo </p>
 							<div class="flex-sb-m w-full p-b-30">
 								<div class="flex-sb-m w-full p-b-30">
 									<input type="file" name="annonce" />		
 							</div>
 
-
+							<!-- SUBMIT -->
 							<div class="container-login100-form-btn">
 								<button class="login100-form-btn" name = "publier">
 									publier
@@ -259,13 +204,7 @@ class VueAnnonce {
 			<!-- footer -->
 			
 			
-			<FOOTER>
-			
-				<a href="index.php"> <img src="images/COL.png" alt="Logo du site"/> </a>
-
-				<p> 2021 - COLSOLUTION - Creative Common Licence</p>
-			
-			</FOOTER>
+			<?php include 'html/footer.html'; ?>
 		
 		</BODY>
 	</HTML>

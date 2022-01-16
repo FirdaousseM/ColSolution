@@ -14,26 +14,32 @@ class ContAnnonce{
 		$this->modele = new ModeleAnnonce();
 		$this->vue = new VueAnnonce();
 		
-		if(isset($_GET['action'])){
+		if(isset($_GET['action'])) {
 			$this->action = $_GET['action'];
 		}
-		else{
-			$this->action = "depotAnnonce";
-		}
+		
 	}
 
 
-
+	// On récupère les données du modèle, et on les envoie à la vue qui les affiche
     public function consulterAnnonce() {
 
+		$idAnnonce;
+		if(isset($_GET['id']))
+			$idAnnonce = $_GET['id'];
+			 
+		
 		// INFO ANNONCE
-		$tabAnnonce = $this->modele->getInfoAnnonce(1);		
+		$tabAnnonce = $this->modele->getInfoAnnonce($idAnnonce);		
 
 		$titre = $tabAnnonce[0]["titre"];
 		$desc = $tabAnnonce[0]["description"];
 		
+		// IMAGE ANNONCE
+		$img = $this->modele->getImg($idAnnonce);
+
 		// INFO LOGEMENT
-		$tabLogement = $this->modele->getInfoLogement(1);
+		$tabLogement = $this->modele->getInfoLogement($idAnnonce);
 
 		$prix = $tabLogement[0]["prix"];
 		$type = $tabLogement[0]["type"];
@@ -41,7 +47,7 @@ class ContAnnonce{
 		$nbChambre = $tabLogement[0]["nbChambre"];
 
 		// INFO LOCALISATION
-		$tabLocalisation = $this->modele->getInfoLocalisation(1);
+		$tabLocalisation = $this->modele->getInfoLocalisation($idAnnonce);
 
 		$metro = $tabLocalisation[0]["presMetro"] == 1 ? "oui" : "non";
 		$bus = $tabLocalisation[0]["presBus"] == 1 ? "oui" : "non";
@@ -50,23 +56,47 @@ class ContAnnonce{
 		$commerce = $tabLocalisation[0]["presCommerce"] == 1 ? "oui" : "non";
 
 		// INFO USER
-		$tabUser = $this->modele->getInfoUser(1);
+		$tabUser = $this->modele->getInfoUser($idAnnonce);
 
 		$prenom = $tabUser[0]["prenom"];
 		$num = $tabUser[0]["NUMTEL"];
+		$avatar = $tabUser[0]["avatar"];
+
+		
+		// On met toutes les infos dans un tab
+		$tabInfo = array();
+		$tabInfo = [
+			"titre" => $titre,
+			"desc" => $desc,
+			"img" => $img,
+			"prix" => $prix,
+			"type" => $type,
+			"superficie" => $superficie,
+			"nbChambre" => $nbChambre,
+			"metro" => $metro,
+			"bus" => $bus,
+			"train" => $train,
+			"tram" => $tram,
+			"commerce" => $commerce,
+			"prenom" => $prenom,
+			"num" => $num,
+			"avatar" => $avatar
+
+		];
+
 
 		
 
-        $this->vue->consulterAnnonce($titre, $desc, $prix, $type, $superficie, $nbChambre, $metro, $bus, $train, $tram, $commerce, $prenom, $num);
+        $this->vue->consulterAnnonce($tabInfo);
 
     }
 
-	public function form_depotAnnonce(){
-		$this->vue->form_depotAnnonce();
-	}
 
-	public function annonce(){
+	// On effectue les inserts de la nouvelle annonce
+	public function deposerAnnonce(){
 		$this->modele->depotAnnonce();
+		$this->vue->form_depotAnnonce();
+
 	}
 }
 ?>

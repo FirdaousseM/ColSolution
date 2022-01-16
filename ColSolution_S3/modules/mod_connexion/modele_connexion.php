@@ -9,7 +9,7 @@ class ModeleConnexion extends Connexion{
 		
 	}
 
-function connexion(){
+	function connexion(){
 		$a = new Connexion();
 		$bdd = $a->initConnexion();
 		if (isset($_POST['submit'])) {
@@ -22,29 +22,29 @@ function connexion(){
 				$check->execute(array($email,$pass));
 				$row = $check->rowCount();
 		
-			if ($row > 0)
-			{
-				if(filter_var($email, FILTER_VALIDATE_EMAIL))
+				if ($row > 0)
 				{
-					$data = $check->fetch();
-					$_SESSION['idUtilisateur'] = $data['idUtilisateur'];
-					$_SESSION['nom'] = $data['nom'];
-					$_SESSION['prenom'] = $data['prenom'];
-					$_SESSION['age'] = $data['age'];
-					$_SESSION['email'] = $data['email'];
-					$_SESSION['sexe'] = $data['sexe'];
-					$_SESSION['NUMTEL'] = $data['NUMTEL'];
-					$_SESSION['avatar'] = $data['avatar'];
-					$_SESSION['description'] = $data['description'];
-					header('Location:index.php?module=compte&action=compte'); 		 
-				} 
-			}
-			else 
-			{			
-				header('Location:index.php?module=inscription&action=inscription'); 			
+					if(filter_var($email, FILTER_VALIDATE_EMAIL))
+					{
+						$data = $check->fetch();
+						$_SESSION['idUtilisateur'] = $data['idUtilisateur'];
+						$_SESSION['nom'] = $data['nom'];
+						$_SESSION['prenom'] = $data['prenom'];
+						$_SESSION['age'] = $data['age'];
+						$_SESSION['email'] = $data['email'];
+						$_SESSION['sexe'] = $data['sexe'];
+						$_SESSION['NUMTEL'] = $data['NUMTEL'];
+						$_SESSION['avatar'] = $data['avatar'];
+						$_SESSION['description'] = $data['description'];
+						header('Location:index.php?module=mod_compte&action=compte'); 		 
+					} 
+				}
+				else 
+				{			
+					header('Location:index.php?module=mod_inscription&action=inscription'); 			
+				}
 			}
 		}
-	}
 	}
 
 	function deconnexion(){

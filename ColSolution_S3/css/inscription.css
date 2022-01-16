@@ -3,7 +3,7 @@ body {
 	font-family:Arial;
 	margin:auto;
 	width:1000px;
-	background:url('../images/wowww.jpg') no-repeat center fixed;
+	background:url('../images/vdvv.jpg') no-repeat center fixed;
 	-webkit-background-size:cover ;
 	-webkit-backdrop-filter: blur(15px);
 
@@ -79,7 +79,7 @@ nav img {
 /* liens cliquables */
 
 .menuLink {
-	background-color: rgb(108, 158, 187);
+	background-color:rgb(196, 117, 52);
 	position:relative;
 	bottom:20px;
 	text-decoration:none;
@@ -111,16 +111,17 @@ nav img {
 
 #menusMessage {
 	display:inline-block;
-	width:250px;
-	position: relative;
-	float: left;
+	width:150px;
+	margin-right:20px;
 }
 
 /* menu central (pages publication/recherche annonce) */
 
 #Annonce {
 	display:inline-block;
-	width:420px;
+	margin-right:50px;
+	width:500px;
+    left: 130px;
     position: relative;
 }
 
@@ -130,62 +131,26 @@ nav img {
 	display:inline-block;
 	width:200px;
 	float:right;
-	position: relative;
 }
 
 /* MAIN */
 
 main {
 	width:1000px;
-	height:1000px;
+	height:400px;
 	padding:10px;
 	margin-top:30px;
 	color:rgb(187, 171, 171);
 	font-size:18px;
 	/*background-color:rgb(5, 5, 5);*/	
-	background:url('../images/fn.jpg') no-repeat center ; 
+/*	background:url('../images/on2.jpg') no-repeat center ;*/ 
 	-webkit-background-size:cover ;
-	/*background-color:rgb(27, 26, 26);*/
-
-}
-main h2 {
-	color:rgb(56, 60, 63);
-	position:relative;
-    font-family: Poppins-Regular;
-	text-align: center;
-	background-color: rgb(108, 158, 187);
+	background-color:rgb(27, 26, 26);
 
 }
 
-#rec {
 
-	display: block;
-	position: relative;
-	border-bottom:2px solid aqua;
-	margin-left: 10px;
-	margin-top: 30px;
 
-}
-
-#lec {
-display: block;
-position: relative;
-width: 1000px;
-
-}
-
-#message {
-display:inline-block;
-position: relative;
-width: 600;
-
-}
-
-#btn_message{
-display: inline-block;
-position: relative;
-bottom: 20px;
-}
 footer {
 	width:1000px;
 	padding:10px;

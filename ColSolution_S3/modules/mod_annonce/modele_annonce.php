@@ -5,13 +5,15 @@ require_once 'connexion.php';
 
 class ModeleAnnonce{
 
-    public function __construct(){
-		
+	private $bdd;
+    
+	public function __construct(){
+
 	}
 
 	/* DEPOSER ANNONCE */
 
-	public function annonce(){
+	public function depotAnnonce(){
 		
 		$co = new Connexion();
 		$bdd = $co->initConnexion();
@@ -32,28 +34,27 @@ class ModeleAnnonce{
 						$prix = htmlspecialchars($_POST['prix']);
 						
 						//date et heure de l'annonce
-						$date= date("Y-m-d");
-						$time=date("H:m");
-						$datetime=$date."T".$time;
+						$date = date("Y-m-d");
+						$time = date("H:m");
+						$datetime = $date."T".$time;
 
 						// insertion annonce
-						$insAnnonce = $bdd->prepare("INSERT INTO Annonce(titre, dateCreation, description, idUtilisateur) VALUES (?,?,?,?)");
-						$insAnnonce->execute(array($titre, $datetime, $description, $_SESSION['idUtilisateur']));
+						$insAnnonce = $bdd->prepare("INSERT INTO Annonce(titre, dateCreation, description, idUtilisateur) VALUES (?,NOW(),?,?)");
+						$insAnnonce->execute(array($titre, $description, 1));//$_SESSION['idUtilisateur']));
 
 						// insertion localisation
 						$insLocalisation = $bdd->prepare("INSERT INTO Localisation(ville, quartier, rue, codePostal) VALUES (?,?,?,?)");
 						$insLocalisation->execute(array($ville, $quartier, $rue, $codePostal));
 
 						// selection de l'id de la localisation dans une variable
-						$idLocalisation = $bdd->prepare("SELECT idLocalisation FROM Localisation WHERE ville = ? ORDER BY idLocalisation DE SC");
-						$idLocalisation->execute(array($ville));
-						$idLocalisation = $idLocalisation->fetch();
-						$idLocalisation = $idLocalisation['idLocalisation'];
+						$selectLoc = $bdd->prepare("SELECT idLocalisation FROM Localisation WHERE ville = ? ORDER BY idLocalisation DESC");
+						$selectLoc->execute(array($ville));
+						$tabResult = $selectLoc->fetch();
+						$idLocalisation = $tabResult['idLocalisation'];
 
 						// insertion du logement
 						$insLogement = $bdd->prepare("INSERT INTO Logement(superficie, type, nbChambre, prix, idLocalisation) VALUES (?,?,?,?,?)");
 						$insLogement->execute(array($superficie, $type, $nbChambres, $prix, $idLocalisation));
-						//header('Location:index.php');
 
 					}
 				}
@@ -80,6 +81,19 @@ class ModeleAnnonce{
 		$tab = $selectPrep->fetchAll();
 
 		return $tab;
+	}
+
+	// - dans la table image
+	public function getImg($idAnnonce) {
+		$co = new Connexion();
+		$bdd = $co->initConnexion();
+
+		$selectPrep = $bdd->prepare("select nomImage from Image where idAnnonce = ?");	
+		$selectPrep->execute(array($idAnnonce));
+		$tabResult = $selectPrep->fetch();
+		$img = $tabResult['nomImage'];
+
+		return $img;
 	}
 
 	// - dans la table Logement
@@ -119,7 +133,7 @@ class ModeleAnnonce{
 
 		$idUser = $this->getIdUser($idAnnonce);
 
-		$selectPrep = $bdd->prepare("select prenom, NUMTEL from Utilisateurs where idUtilisateur = ?");	
+		$selectPrep = $bdd->prepare("select prenom, NUMTEL, avatar from Utilisateurs where idUtilisateur = ?");	
 		$selectPrep->execute(array($idUser));
 		$tab = $selectPrep->fetchAll();
 

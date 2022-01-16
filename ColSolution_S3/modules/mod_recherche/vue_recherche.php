@@ -1,5 +1,5 @@
 <?php
-require_once 'modules/mod_recherches/modele_recherche.php';
+require_once 'modules/mod_recherche/modele_recherche.php';
 require_once 'connexion.php';
 class VueRecherche{
 
@@ -37,29 +37,10 @@ if (isset($_GET['searc']) AND !empty($_GET['searc'])) {
 		<link href="css/recherche.css" rel="stylesheet" type="text/css" />
 	</HEAD>
 	<BODY>
-		<!-- en tête de page-->
-		<p id="pp"> Vous recherchez un colocataire? Vous êtes au bon endroit </p> 
-		<HEADER>
-			<a href="index.php"> <img class="logo" src="images/COL.png" alt="Logo du site"/> </a>
-            <input id="searchbar" type="text" name="search" placeholder="Recherche..." />
-			<!-- <input id="euh" type="submit" value="Valider" /> -->
-	
-		</HEADER>
-		
-		<!-- menu de navigation -->
-		
-		<NAV id="mainNav">
-			<nav id="menusMessage">
-				<a class="menuLink" href="message.php">  <img class="icons" src="images/icons/messa.png" alt=""/>Messages </a>
-			</nav>
-			<nav id="Annonce">			
-				<a class="menuLink" href="DepoAnnonce.php"> <img class="icons" src="images/icons/map-marker.png" alt=""/> Deposer Annonce </a>
-                <a class="menuLink" href="index.php?module=recherche&action=Users"> <img class="icons" src="images/sr.png" alt=""/> Rechercher Annonce </a>				
-            </nav>
-			<nav id="menusCompte">
-				<a class="menuLink" href="index.php?module=form&action=connexion"> <img class="icons" src="images/icons/favicon.ico" alt=""/> Mon Compte </a>
-			</nav>
-		</NAV>
+
+		<?php 
+			include 'html/header.html';
+		?>
 		<!-- corps de page -->
 		<MAIN>
         <form method = "GET">

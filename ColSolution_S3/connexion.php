@@ -11,6 +11,10 @@ class Connexion {
 		$bdd = new PDO($dns, $user, $password);
         return $bdd;
 	}	 
+	
+	static function cookies() {
+		setcookie('accepter', true, time() + 365*24*3600);
+	}
 }
 
 ?>

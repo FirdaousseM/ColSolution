@@ -209,9 +209,7 @@ main h3 {
     height: 180px;
 	right:10px;
     padding:10px;
-	/*background-color:rgb(5, 5, 5);	*/
 	background:url('../images/fn.jpg') no-repeat center ; 
-    /*border:2px dashed orange;*/
 }
 
 
@@ -396,3 +394,5 @@ footer p {
 	position: relative;
 	top: 40px;
 }
+
+

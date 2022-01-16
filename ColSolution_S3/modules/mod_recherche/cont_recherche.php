@@ -5,8 +5,8 @@ require_once 'vue_recherche.php';
 
 class ContRecherche{
 
-    public $modele;
-	public $vue;
+    private $modele;
+	private $vue;
 	public $action;
 	public $ok;
 

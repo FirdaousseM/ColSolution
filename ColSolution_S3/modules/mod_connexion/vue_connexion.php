@@ -4,64 +4,33 @@ class VueConnexion {
 
 	function form_connexion(){
 		if(isset($_SESSION['idUtilisateur'])) {
-            header('Location:index.php?module=compte&action=compte&idUtilisateur='.$_SESSION['idUtilisateur']);
+            header('Location:index.php?module=mod_compte&action=compte&idUtilisateur='.$_SESSION['idUtilisateur']);
         }
 		if (isset($_GET['annonce']) AND !empty($_GET['annonce'])){
 			header('Location:index.php');
-		 }
+		}
 ?>  
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>COLSOLUTION</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<title>COLSOLUTION</title>
+		<meta charset="UTF-8">
 
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/connexion.css">
-</head>
+		<link rel="stylesheet" type="text/css" href="css/util.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/accueil.css">
+	</head>
 	</br>
 	</br>
-<p id="pp"> Bienvenue sur COLSOLUTION </p>
-<body>
-<HEADER>
-			<a href="index.php"> <img class="logo" src="images/COL.png" alt="Logo du site"/> </a>
-            <form id="searchbar" method = "GET">
-			<input id="searchbar" type="search" name="annonce" placeholder="Recherche..." />
-			</form>
-			<!-- <input id="euh" type="submit" value="Valider" /> -->
-	
-		</HEADER>
-		
-		<!-- menu de navigation -->
-		
-		<NAV id="mainNav">
-		
-			<nav id="menusMessage">
-			
-				<a class="menuLink" href="index.php?module=message&action=message">  <img class="icons" src="images/icons/messa.png" alt=""/>Messages </a>
-			
-			</nav>
-			<nav id="Annonce">
-			
-				<a class="menuLink" href="index.php?module=annonce&action=depotAnnonce"> <img class="icons" src="images/icons/map-marker.png" alt=""/> Deposer Annonce </a>
-                <a class="menuLink" href="index.php?module=recherche&action=Users"> <img class="icons" src="images/sr.png" alt=""/> Rechercher Annonce </a>				
-			
-            </nav>
-			
-			<nav id="menusCompte">
-			
-				<a class="menuLink" href="index.php?module=form&action=connexion"> <img class="icons" src="images/icons/favicon.ico" alt=""/> Mon Compte </a>
-			
-			</nav>
-		</NAV>		
+	<p id="pp"> Bienvenue sur COLSOLUTION </p>
+	<body>
+		<?php 
+			include 'html/header.html';
+		?>	
 		<!-- corps de page -->
 		<MAIN>
 			<h2> CONNEXION </h2>
 				<form class="login100-form validate-form" method="POST" action="">
-				<form class="login100-form validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">email</span>
 						<input class="input100" type="text" name="email" placeholder="Enter email">
@@ -80,7 +49,7 @@ class VueConnexion {
 							<label class="label-checkbox100" for="ckb1" >
 								Remember me
 							</label>
-					</div>
+						</div>
 						<div>
 							<a href="#" class="txt1">
 								Forgot Password?
@@ -94,30 +63,14 @@ class VueConnexion {
 						</button>
 					</div>
 				</form>
-			</div>
-		</div>
-	</div>
-	
-<<<<<<< HEAD
-	
-	
-
-
-</body>
-</html>
-<?php
-	 }
-=======
-	</MAIN>
-		<!-- footer -->
-		<FOOTER>
-			<a href="index.php"> <img src="images/COL.png" alt="Logo du site"/> </a>
-			<p> 2021 - COLSOLUTION - Creative Common Licence</p>
-		</FOOTER>
+		</MAIN>
+		
+	<?php 
+		include 'html/footer.html';
+	?>	
 	</BODY>
 </HTML>
 <?php 
->>>>>>> 4bb5cd2854ae2584e2334df9e9b6805235af663f
 	}
 }
 ?>

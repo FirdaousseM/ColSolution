@@ -2,12 +2,11 @@
 
 require_once 'modele_message.php';
 require_once 'vue_message.php';
-require_once 'mod_message.php';
 
 class ContMessage{
 
-    public $modele;
-	public $vue;
+    private $modele;
+	private $vuee;
 	public $action;
 
 	public function __construct(){
@@ -18,12 +17,11 @@ class ContMessage{
 		}
 	}
 
-	function form_message(){
-		$this->vuee->form_message();
-	}
 
 	function message(){
 		$this->modele->message();
+		$this->vuee->form_message();
+
 	}
 
 	function form_reception(){

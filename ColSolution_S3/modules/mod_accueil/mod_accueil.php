@@ -7,8 +7,13 @@ class ModAccueil{
     private $controleur;
 
     public function __construct() { 
-        $controleur = new ContAccueil();
+        $this->controleur = new ContAccueil();
+        $this->controleur->affichageAccueil();
 
+        switch($this->controleur->cookie) {
+            case "accepter": $this->controleur->affichageAccueil();
+            break;  
+        }
     }
 
 }

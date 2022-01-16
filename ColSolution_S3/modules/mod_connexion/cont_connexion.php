@@ -22,24 +22,18 @@ class ContConnexion{
 	}
 
 
-	public function form_connexion(){
-		$this->vue->form_connexion();
-	}
-
-	public function action(){
-		$this->action = "connexion";
-	}
-
 
 	public function connexion(){
 		$this->modele->connexion();
+		$this->vue->form_connexion();
+
 	}
 
 
 	
 
 	public function deconnexion(){
-		$this->modele ->deconnexion();
+		$this->modele->deconnexion();
 	}
 
 }
